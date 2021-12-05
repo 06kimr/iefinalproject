@@ -29,7 +29,7 @@ if checkbox_btn:
     st.image(image3)
 
     # Image('image.jpg', width=400)
-
+    from rmn import RMN
     m = RMN()
     n = RMN()
     k = RMN()
