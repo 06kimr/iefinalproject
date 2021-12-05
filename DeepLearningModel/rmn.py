@@ -11,7 +11,6 @@ from ast import literal_eval
 
 #제목   
 st.title('Emotion Control')
-hour_to_filter = st.slider('Person Number', 1, 3, 1)
 checkbox_btn5 = st.checkbox("Image Upload")
 if checkbox_btn5:
     #이미지 업로더
@@ -27,9 +26,9 @@ if checkbox_btn:
     st.image(image)
     st.image(image2)
     st.image(image3)
-
+    
+    from DeepLearningModel.rmn.__init__ import RMN
     # Image('image.jpg', width=400)
-    from rmn import RMN
     m = RMN()
     n = RMN()
     k = RMN()
