@@ -1,171 +1,129 @@
-# # from IPython.display import Image
-
-# import cv2
-# from rmn import RMN
-
-
-# # Image('image.jpg', width=400)
-# m = RMN()
-
-# # image = cv2.imread("C:\\Users\\User\\Documents\\zoom_project\\DeepLearningModel\\5.jpg")
-# image = cv2.imread("C:\\Users\\User\\Desktop\\image.jpg")
-# results = m.detect_emotion_for_single_frame(image)
-
-# # print(results[0])
-# person1 = results[0]
-# print(results[0])
-# person2 = results[1]
-# person3 = results[2]
-# person4 = results[3]
-# person5 = results[4]
-# person6 = results[5]
-# person7 = results[6]
-# print(person1['emo_label'])
-# print(person2['emo_label'])
-# print(person3['emo_label'])
-# print(person4['emo_label'])
-# print(person5['emo_label'])
-# print(person6['emo_label'])
-# print(person7['emo_label'])
-
-
 # from IPython.display import Image
-import cv2
+import cv2eamli
+from streamlit import uploaded_file_manager
 from rmn import RMN
 #streamlit library
 import streamlit as st
 import pandas as pd
 import altair as alt
 import numpy as np
+import matplotlib.pyplot as plt
 from ast import literal_eval
+
+
 #제목   
 st.title('Emotion Control')
-hour_to_filter = st.slider('Person Number', 1, 7, 1)
+hour_to_filter = st.slider('Person Number', 1, 3, 1)
+checkbox_btn5 = st.checkbox("Image Upload")
+if checkbox_btn5:
+    #이미지 업로더
+    uploaded_file = st.file_uploader("Choose Images",type=["jpg","jpeg","png"],accept_multiple_files= True)
+    
 checkbox_btn = st.checkbox("Show your Data")
 if checkbox_btn: 
-    st.write("Data Loaded")
     #캡쳐 이미지 출력
-    from PIL import Image
-    image = Image.open('5.jpg')
-   
+    from PIL import Image   
+    image = Image.open(uploaded_file[0])
+    image2 = Image.open(uploaded_file[1])
+    image3 = Image.open(uploaded_file[2])
     st.image(image)
-    
+    st.image(image2)
+    st.image(image3)
+
     # Image('image.jpg', width=400)
+
     m = RMN()
-
-    image = cv2.imread("5.jpg")
-    results = m.detect_emotion_for_single_frame(image)
-
-
-   
-
+    n = RMN()
+    k = RMN()
     
-    #그대로 출력
-    # st.write(person1['emo_label'])
-    # st.write(person2['emo_label'])
-    # st.write(person3['emo_label'])
-    # st.write(person4['emo_label'])
-    # st.write(person5['emo_label'])
-    # st.write(person6['emo_label'])
-    # st.write(person7['emo_label'])
+    
+    image = cv2.imread('1.jpg')
+    image2 = cv2.imread('2.jpg')
+    image3 = cv2.imread('3.jpg')
 
-    #딕셔러니
-    # st.write("<Chart>")
-    # dict_2 = {} # blank Dictionary
-    # dict_2['person1'] = person1['emo_label']
-    # dict_2['person2'] = person2['emo_label']
-    # dict_2['person3'] = person3['emo_label']
-    # dict_2['person4'] = person4['emo_label']
-    # dict_2['person5'] = person5['emo_label']
-    # dict_2['person6'] = person6['emo_label']
-    # dict_2['person7'] = person7['emo_label']
-    # person = dict_2
-    # st.write((person))
-
-
-    # sample = {person1['emo_label'],person2['emo_label'],person3['emo_label'],person4['emo_label'],person5['emo_label']
-    # ,person6['emo_label'],person7['emo_label']}
-
-
-    # data1 = pd.DataFrame({
-    # 'person': ['1', '2', '3','4','5','6','7'],
-    # 'emotion': [person1['emo_label'],person2['emo_label'],person3['emo_label'],person4['emo_label'],person5['emo_label']
-    # ,person6['emo_label'],person7['emo_label']],
-    # })
-
-    personList = [];
-    # print(results[0])
+    results = m.detect_emotion_for_single_frame(image)
+    results2 = n.detect_emotion_for_single_frame(image2)
+    results3 = k.detect_emotion_for_single_frame(image3)
+    
+    personList = []
     person1 = results[0]
-    person2 = results[1]
-    person3 = results[2]
-    person4 = results[3]
-    person5 = results[4]
-    person6 = results[5]
-    person7 = results[6]
+    person2 = results2[0]
+    person3 = results3[0]
 
-    personList.append(person1);
-    personList.append(person2);
-    personList.append(person3);
-    personList.append(person4);
-    personList.append(person5);
-    personList.append(person6);
-    personList.append(person7)
+    print(personList)
+    personList.append(person1)
+    personList.append(person2)
+    personList.append(person3)
+        
 
 
-    neutral = 0;
-    angry = 0;
-    disgust = 0;
-    fear = 0;
-    happy = 0;
-    sad = 0;
-    surprise = 0;
-    understand = 0;
-    misunderstsand = 0;
+    neutralCount = 0
+    angryCount = 0
+    disgustCount = 0
+    fearCount = 0
+    happyCount = 0
+    sadCount = 0
+    surpriseCount = 0
+    understandCount = 0
+    misunderstandCount = 0
 
     for person in personList:
         if person['emo_label'] == "neutral":
-            neutral += 1;
-            understand += 1;
+            neutralCount += 1
+            understandCount += 1
         elif person['emo_label'] == "angry":
-            angry += 1;
-            misunderstsand += 1;
+            angryCount += 1
+            misunderstandCount += 1
         elif person['emo_label'] == "disgust":
-            disgust += 1;
-            misunderstsand += 1;
+            disgustCount += 1
+            misunderstandCount += 1
         elif person['emo_label'] == "fear":
-            fear += 1;
-            misunderstsand += 1;
+            fearCount += 1
+            misunderstandCount += 1
         elif person['emo_label'] == "happy":
-            happy += 1;
-            understand += 1;
+            happyCount += 1
+            understandCount += 1
         elif person['emo_label'] == "sad":
-            sad += 1;
-            misunderstsand += 1;
+            sadCount += 1
+            misunderstandCount += 1
         elif person['emo_label'] == "surprise":
-            surprise += 1;
-            misunderstsand += 1;
+            surpriseCount += 1
+            understandCount += 1
         else: break
 
-
-
+    #감정
     data1 = pd.DataFrame({
     'emotion': ['neutral', 'angry', 'disgust', 'fear', 'happy', 'sad', 'surprise'],
-    'amount': [neutral, angry, disgust, fear, happy, sad, surprise],
+    'amount': [neutralCount, angryCount, disgustCount, fearCount, happyCount, sadCount, surpriseCount],
+    })
+    #멤버별 
+    data2 = pd.DataFrame({
+    'person': ['1', '2','3'],
+    'emotion': [person1['emo_label'],person2['emo_label'],person3['emo_label']]
     })
 
-
-
-
-
-
-
-
-    checkbox_btn2 = st.checkbox("View Chart")
+    #이해도
+    data3 = pd.DataFrame({
+        'comprehension':['Understanding','Misunderstanding'],'amount':[understandCount,misunderstandCount]
+    })
+    checkbox_btn2 = st.checkbox("View emotion")
     if checkbox_btn2:
         st.write(data1) 
-        st.write(alt.Chart(data1,width=3,height=7).mark_bar().encode(
+        st.write(alt.Chart(data1,width=7,height=6).mark_bar().encode(
         x=alt.X('emotion', sort=None),
         y='amount',
         ))
-
-    # st.info("Information - The results don't tell you everything.")
+    checkbox_btn3 = st.checkbox("View member")
+    if checkbox_btn3:
+        st.write(data2) 
+        st.write(alt.Chart(data2,width=7,height=2).mark_bar().encode(
+        x=alt.X('person', sort=None),
+        y='emotion',
+        ))
+    checkbox_btn4 = st.checkbox("View comprehension")
+    if checkbox_btn4:    
+        st.write(data3) 
+        st.write(alt.Chart(data3,width=2,height=6).mark_bar().encode(
+        x=alt.X('comprehension', sort=None),
+        y='amount',
+        ))
