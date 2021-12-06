@@ -6,7 +6,7 @@ import numpy as np
 import torch
 from torchvision.transforms import transforms
 from models import densenet121, resmasking_dropout1
-from .rmn.version import __version__
+from .version import __version__
 
 
 def show(img, name="disp", width=1000):
