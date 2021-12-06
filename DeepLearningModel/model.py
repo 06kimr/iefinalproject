@@ -6,7 +6,6 @@ import numpy as np
 import torch
 from torchvision.transforms import transforms
 from models import densenet121, resmasking_dropout1
-from version import __version__
 
 
 def show(img, name="disp", width=1000):
@@ -108,7 +107,7 @@ is_cuda = torch.cuda.is_available()
 
 # load configs and set random seed
 package_root_dir = os.path.dirname(__file__)
-config_path = os.path.join(package_root_dir, "configs/fer2013_config.json")
+config_path = os.path.join(package_root_dir, "rmn\\configs\\fer2013_config.json")
 with open(config_path) as ref:
     configs = json.load(ref)
 

@@ -28,11 +28,10 @@ if checkbox_btn:
     st.image(image2)
     st.image(image3)
     
-    from rmn import RMN 
     # Image('image.jpg', width=400)
-    m = RMN()
-    n = RMN()
-    k = RMN()
+    m = model.RMN()
+    n = model.RMN()
+    k = model.RMN()
     
     
     image = cv2.imread('1.jpg')
