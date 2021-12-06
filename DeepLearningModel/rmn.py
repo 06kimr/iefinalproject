@@ -6,6 +6,7 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 import numpy as np
+from . import RMN
 from ast import literal_eval
 
 
@@ -27,7 +28,7 @@ if checkbox_btn:
     st.image(image2)
     st.image(image3)
     
-    from rmn import RMN
+    from rmn import RMN 
     # Image('image.jpg', width=400)
     m = RMN()
     n = RMN()
