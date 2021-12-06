@@ -4,6 +4,7 @@ import json
 import cv2
 import numpy as np
 import torch
+torch.cuda.empty_cache()
 from torchvision.transforms import transforms
 from models import densenet121, resmasking_dropout1
 
