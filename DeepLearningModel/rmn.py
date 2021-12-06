@@ -31,7 +31,7 @@ if checkbox_btn:
     # Image('image.jpg', width=400)
     
     
-    image = cv2.imread('C:\Users\User\Documents\finalproject\DeepLearningModel\1.jpg')
+    image = cv2.imread('C:\\Users\\User\\Documents\\finalproject\\DeepLearningModel\\1.jpg')
     image2 = cv2.imread('2.jpg')
     image3 = cv2.imread('3.jpg')
 
