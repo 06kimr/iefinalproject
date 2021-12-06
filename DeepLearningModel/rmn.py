@@ -38,9 +38,9 @@ if checkbox_btn:
     image2 = cv2.imread('2.jpg')
     image3 = cv2.imread('3.jpg')
 
-    results = m.detect_emotion_for_single_face_image(image)
-    results2 = n.detect_emotion_for_single_face_image(image2)
-    results3 = k.detect_emotion_for_single_face_image(image3)
+    results = m.detect_emotion_for_single_frame(image)
+    results2 = n.detect_emotion_for_single_frame(image2)
+    results3 = k.detect_emotion_for_single_frame(image3)
     
     personList = []
     person1 = results[0]
