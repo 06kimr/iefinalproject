@@ -6,7 +6,7 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 import numpy as np
-import model
+import rmn.model as rmn
 from ast import literal_eval
 from PIL import Image   
 
@@ -34,9 +34,9 @@ if checkbox_btn1:
         
         
 
-    m = model.RMN();
-    n = model.RMN();
-    k = model.RMN();
+    m = rmn.RMN();
+    n = rmn.RMN();
+    k = rmn.RMN();
 
 
     localimage = cv2.imread('C:\\Users\\User\\Documents\\finalproject\\DeepLearningModel\\1.jpg')
