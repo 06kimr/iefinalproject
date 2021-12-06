@@ -1,14 +1,14 @@
-from rmn import RMN
-
+# from IPython.display import Image
 import cv2
 from streamlit import uploaded_file_manager
+from rmn import RMN
 #streamlit library
 import streamlit as st
 import pandas as pd
+import altair as alt
 import numpy as np
+import matplotlib.pyplot as plt
 from ast import literal_eval
-from PIL import Image   
-
 
 
 #제목   
@@ -21,7 +21,7 @@ if checkbox_btn:
 checkbox_btn1 = st.checkbox("Show your Data")
 if checkbox_btn1: 
         #캡쳐 이미지 출력
-
+    from PIL import Image   
     image = Image.open(uploaded_file[0])
     image2 = Image.open(uploaded_file[1])
     image3 = Image.open(uploaded_file[2])
