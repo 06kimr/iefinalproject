@@ -32,8 +32,8 @@ if checkbox_btn:
     
     
     image = cv2.imread('C:\\Users\\User\\Documents\\finalproject\\DeepLearningModel\\1.jpg')
-    image2 = cv2.imread('2.jpg')
-    image3 = cv2.imread('3.jpg')
+    image2 = cv2.imread('C:\\Users\\User\\Documents\\finalproject\\DeepLearningModel\\2.jpg')
+    image3 = cv2.imread('C:\\Users\\User\\Documents\\finalproject\\DeepLearningModel\\3.jpg')
 
     results = model.RMN.detect_emotion_for_single_frame(image)
     results2 = model.RMN.detect_emotion_for_single_frame(image2)
