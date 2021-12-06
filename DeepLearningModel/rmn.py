@@ -29,18 +29,15 @@ if checkbox_btn:
     st.image(image3)
     
     # Image('image.jpg', width=400)
-    m = model.RMN()
-    n = model.RMN()
-    k = model.RMN()
     
     
     image = cv2.imread('1.jpg')
     image2 = cv2.imread('2.jpg')
     image3 = cv2.imread('3.jpg')
 
-    results = m.detect_emotion_for_single_frame(image)
-    results2 = n.detect_emotion_for_single_frame(image2)
-    results3 = k.detect_emotion_for_single_frame(image3)
+    results = model.RMN.detect_emotion_for_single_frame(image)
+    results2 = model.RMN.detect_emotion_for_single_frame(image2)
+    results3 = model.RMN.detect_emotion_for_single_frame(image3)
     
     personList = []
     person1 = results[0]
