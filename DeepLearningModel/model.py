@@ -107,7 +107,7 @@ is_cuda = torch.cuda.is_available()
 
 # load configs and set random seed
 package_root_dir = os.path.dirname(__file__)
-config_path = os.path.join(package_root_dir, "rmn\\configs\\fer2013_config.json")
+config_path = os.path.join(package_root_dir, "rmn/configs/fer2013_config.json")
 with open(config_path) as ref:
     configs = json.load(ref)
 
